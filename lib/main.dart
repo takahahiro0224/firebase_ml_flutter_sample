@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_ml_flutter_sample/DetailWidget.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -76,7 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
         throw Exception('ファイルを取得できませんでした');
       }
 
-    } catch(e) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DetailWidget(file)));
+    } catch (e) {
     }
+
   }
 }
