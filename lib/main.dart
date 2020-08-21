@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_flutter_sample/DetailWidget.dart';
+import 'package:firebase_ml_flutter_sample/UranaiWidget.dart';
 
 
 void main() {
@@ -38,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             _startCamera(),
+            _uranai(),
           ],
         ),
       ),
@@ -67,6 +69,28 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget _uranai() {
+    return Container(
+      margin: EdgeInsets.only(top: 10.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: RaisedButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  splashColor: Colors.pinkAccent,
+                  onPressed: () {
+                    _onUranai();
+                  },
+                  child: Text("今日の運勢は？"),
+                )),
+          ),
+        ],
+      ),
+    );
+  }
   void _onPickImageSelected() async {
 
     var imageSource = ImageSource.camera;
@@ -84,4 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
   }
+
+  void _onUranai() async {
+    Navigator.push(
+      context, MaterialPageRoute(builder: (context) => UranaiWidget())
+    );
+
 }
+}
+
+
